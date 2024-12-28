@@ -1,7 +1,3 @@
-require('dotenv').config();
-
-
-// Get current date in format DD-MM-YYYY
 function getCurrentDate() {
     const date = new Date();
     return `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
