@@ -1,3 +1,6 @@
+require('dotenv').config();
+
+
 // Get current date in format DD-MM-YYYY
 function getCurrentDate() {
     const date = new Date();
@@ -144,23 +147,25 @@ window.addEventListener('load', function() {
 });
 
 // Event Listeners
-document.getElementById('encodeBtn').addEventListener('click', function() {
-    const databaseLetter = document.getElementById('database').value;
-    const index = parseInt(document.getElementById('index').value);
-    const message = document.getElementById('message').value;
+document.addEventListener('DOMContentLoaded', (event) => {
+    document.getElementById('encodeBtn').addEventListener('click', function() {
+        const databaseLetter = document.getElementById('database').value;
+        const index = parseInt(document.getElementById('index').value);
+        const message = document.getElementById('message').value;
 
-    if (!databaseLetter || !index || !message) {
-        alert('Please fill in all fields!');
-        return;
-    }
+        if (!databaseLetter || !index || !message) {
+            alert('Please fill in all fields!');
+            return;
+        }
 
-    if (index < 1 || index > 25) {
-        alert('Index must be between 1 and 25!');
-        return;
-    }
+        if (index < 1 || index > 25) {
+            alert('Index must be between 1 and 25!');
+            return;
+        }
 
-    const encodedMessage = encodeMessage(databaseLetter, index, message);
-    document.getElementById('output').value = encodedMessage;
+        const encodedMessage = encodeMessage(databaseLetter, index, message);
+        document.getElementById('output').value = encodedMessage;
+    });
 });
 
 document.getElementById('decodeBtn').addEventListener('click', function() {
